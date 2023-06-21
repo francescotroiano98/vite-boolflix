@@ -1,11 +1,23 @@
 <template>
     <div>
-        
+        <div class="input-group mt-3 mb-4 w-75 ">
+                <span class="input-group-text" id="basic-addon1">Search a film</span>
+                <input type="text" class="form-control" placeholder="Character name" aria-label="Character name" aria-describedby="basic-addon1"  v-model="searchedText"
+
+                @keyup.enter="$emit('searched', searchedText)">
+            </div>
     </div>
 </template>
 <script>
 export default {
-    name:"Searchbar"
+    data(){
+        return{
+            searchedText : ''
+        }
+    },
+    name:"Searchbar",
+
+   
 }
 </script>
 <style lang="">

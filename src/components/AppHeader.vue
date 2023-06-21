@@ -15,7 +15,6 @@ export default {
     }
 }
 
-//QUI VOGLIO FARE LA MIA CHIAMATA API //
 
 </script>
 <style lang="">

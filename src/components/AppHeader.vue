@@ -126,21 +126,22 @@ export default {
  
 
 
-methods: {
+        methods: {
 
     
-    getRoundedValue(value) {
-    return Math.ceil(value);
-  },
+            getRoundedValue(value) {
+            return Math.ceil(value);
+            },
 
-    getImagePath: function(img) {
+            getImagePath: function(img) {
             return new URL(`../assets/img/${img}`, import.meta.url).href;
-        },
-        getPosterImagePath: function(img) {
+            },
+            
+            getPosterImagePath: function(img) {
             return `http://image.tmdb.org/t/p/w500/${img}`
-        },    
+            },    
 
-        searchFilm(needle = ''){
+            searchFilm(needle = ''){
             axios.get(this.apiFilmUrl, {
                     params: {
                         query: needle
@@ -171,14 +172,15 @@ methods: {
                     console.log(error);
                 });
 
+            }
+        },
+
+
+        created(){
+            this.searchFilm();
         }
-    },
-
-
-    created(){
-        this.searchFilm();
-    }
 }
+
 </script>
 <style lang="scss">
 .film{

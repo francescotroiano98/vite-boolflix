@@ -5,11 +5,12 @@
         <article class="film" v-for="mysearchedfilm in filmList">
             <h1>{{ mysearchedfilm.title }}</h1>
             <h2>{{ mysearchedfilm.original_title }}</h2>
-            <img :src="getImagePath(`${mysearchedfilm.original_language}.png`)" alt="">
+
+            <p v-if="!availableLangueges.includes(mysearchedfilm.original_language)">{{ mysearchedfilm.original_language }}</p>
+            <img v-else :src="getImagePath(`${mysearchedfilm.original_language}.png`)" alt="">
 
 
-            <p>{{ mysearchedfilm.original_language }}</p>
-
+            
       
             <p>{{ mysearchedfilm.vote_average }}</p>
 
@@ -27,7 +28,10 @@ export default {
         return{
             filmList:[],
             apiUrl:'https://api.themoviedb.org/3/search/movie?api_key=933454d58e05723d1bfb7f8b29528fa2',
-            defaultImagePath: '../assets/img/default.png'
+            availableLangueges:[
+                'it','en','fr','ja','es','cn'
+            ]
+        
         }
     },
     

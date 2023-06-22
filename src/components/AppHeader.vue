@@ -3,6 +3,10 @@
         <Navbar/>
         <Searchbar @searched="searchFilm"/>
         <article class="film" v-for="mysearchedfilm in filmList">
+            <div class="posterimage">
+                <img :src="getPosterImagePath(`${mysearchedfilm.poster_path}`)" alt="">
+            </div>
+          
 
             <h1>{{ mysearchedfilm.title }}</h1>
             <h2>{{ mysearchedfilm.original_title }}</h2>
@@ -12,6 +16,9 @@
             <p>{{ mysearchedfilm.vote_average }}</p>
         </article>
         <article class="series" v-for="mysearchedfilm in seriesList">
+            <div class="posterimage">
+                <img :src="getPosterImagePath(`${mysearchedfilm.poster_path}`)" alt="">
+            </div>
             <h1>{{ mysearchedfilm.name }}</h1>
             <h2>{{ mysearchedfilm.original_name }}</h2>
 
@@ -60,6 +67,9 @@ methods: {
     getImagePath: function(img) {
             return new URL(`../assets/img/${img}`, import.meta.url).href;
         },
+        getPosterImagePath: function(img) {
+            return `http://image.tmdb.org/t/p/w500/${img}`
+        },    
 
         searchFilm(needle = ''){
             axios.get(this.apiFilmUrl, {
@@ -112,5 +122,13 @@ img{
     width: 20px;
     height: 20px;
 }
-    
+.posterimage{
+    height: 340px;
+    width: 226px;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}    
 </style>

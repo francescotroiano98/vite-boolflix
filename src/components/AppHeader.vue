@@ -5,7 +5,9 @@
         <article class="film" v-for="mysearchedfilm in filmList">
             <h1>{{ mysearchedfilm.title }}</h1>
             <h2>{{ mysearchedfilm.original_title }}</h2>
-            <p>{{ mysearchedfilm.original_language }}</p>
+            <img :src="`../assets/img/${mysearchedfilm.original_language}`" alt="">
+            
+      
             <p>{{ mysearchedfilm.vote_average }}</p>
 
 

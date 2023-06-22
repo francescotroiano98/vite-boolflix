@@ -5,7 +5,10 @@
         <article class="film" v-for="mysearchedfilm in filmList">
             <h1>{{ mysearchedfilm.title }}</h1>
             <h2>{{ mysearchedfilm.original_title }}</h2>
-            <img :src="`../assets/img/${mysearchedfilm.original_language}.png`" alt="">
+            <img :src="getImagePath(`${mysearchedfilm.original_language}.png`) ? getImagePath(`${mysearchedfilm.original_language}.png`) : getImagePath('default.png')" alt="">
+
+
+            <p>{{ mysearchedfilm.original_language }}</p>
 
       
             <p>{{ mysearchedfilm.vote_average }}</p>
@@ -23,7 +26,8 @@ export default {
     data(){
         return{
             filmList:[],
-            apiUrl:'https://api.themoviedb.org/3/search/movie?api_key=933454d58e05723d1bfb7f8b29528fa2'
+            apiUrl:'https://api.themoviedb.org/3/search/movie?api_key=933454d58e05723d1bfb7f8b29528fa2',
+            defaultImagePath: '../assets/img/default.png'
         }
     },
     
@@ -37,6 +41,11 @@ export default {
 
 
 methods: {
+
+    getImagePath: function(img) {
+            return new URL(`../assets/img/${img}`, import.meta.url).href;
+        },
+
         searchFilm(needle = ''){
             axios.get(this.apiUrl, {
                     params: {

@@ -13,8 +13,43 @@
 
             <p v-if="!availableLangueges.includes(mysearchedfilm.original_language)">{{ mysearchedfilm.original_language }}</p>
             <img v-else :src="getImagePath(`${mysearchedfilm.original_language}.png`)" alt="">
-            <p>{{ mysearchedfilm.vote_average }}</p>
+            <p>{{ getRoundedValue(mysearchedfilm.vote_average / 2) }}</p>
+            <div v-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 0 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 1 ">
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+            </div>
+            <div v-else-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 1 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 2 ">
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+            </div>
+            <div v-else-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 2 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 3 ">
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+            </div>
+            <div v-else-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 3 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 4">
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+            </div>
+            <div v-else-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 4 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 5">
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+            </div>
+            <div v-else>
+                <i class="star-size fa-regular fa-star" style="color: #000000;"></i>
+                
+            </div>
+            
+            
+
+            
         </article>
+
+
         <article class="series" v-for="mysearchedfilm in seriesList">
             <div class="posterimage">
                 <img :src="getPosterImagePath(`${mysearchedfilm.poster_path}`)" alt="">
@@ -28,7 +63,36 @@
 
             
       
-            <p>{{ mysearchedfilm.vote_average }}</p>
+            <p>{{ getRoundedValue(mysearchedfilm.vote_average / 2) }}</p>
+            <div v-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 0 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 1 ">
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+            </div>
+            <div v-else-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 1 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 2 ">
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+            </div>
+            <div v-else-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 2 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 3 ">
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+            </div>
+            <div v-else-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 3 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 4">
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+            </div>
+            <div v-else-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 4 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 5">
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+            </div>
+            <div v-else>
+                <i class="star-size fa-regular fa-star" style="color: #000000;"></i>
+                
+            </div>
 
 
         </article>
@@ -63,6 +127,11 @@ export default {
 
 
 methods: {
+
+    
+    getRoundedValue(value) {
+    return Math.ceil(value);
+  },
 
     getImagePath: function(img) {
             return new URL(`../assets/img/${img}`, import.meta.url).href;
@@ -130,5 +199,8 @@ img{
         height: 100%;
         object-fit: cover;
     }
+}
+.star-size{
+    font-size: 50px;
 }    
 </style>

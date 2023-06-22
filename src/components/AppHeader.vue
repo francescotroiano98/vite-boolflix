@@ -5,7 +5,7 @@
         <article class="film" v-for="mysearchedfilm in filmList">
             <h1>{{ mysearchedfilm.title }}</h1>
             <h2>{{ mysearchedfilm.original_title }}</h2>
-            <img :src="getImagePath(`${mysearchedfilm.original_language}.png`) ? getImagePath(`${mysearchedfilm.original_language}.png`) : getImagePath('default.png')" alt="">
+            <img :src="getImagePath(`${mysearchedfilm.original_language}.png`)" alt="">
 
 
             <p>{{ mysearchedfilm.original_language }}</p>
@@ -75,6 +75,10 @@ methods: {
 <style lang="scss">
 .film{
     border: 2px solid red;
+}
+img{
+    width: 20px;
+    height: 20px;
 }
     
 </style>

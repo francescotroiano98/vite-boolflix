@@ -1,8 +1,10 @@
 <template>
-    <div>
+    <body>
         <AppHeader/>
         <AppMain/>
-    </div>
+    </body>
+        
+    
 </template>
 <script>
 
@@ -30,9 +32,13 @@ export default {
 
 }
 
-//QUI VOGLIO FARE LA MIA CHIAMATA API //
-
 </script>
-<style lang="">
+<style lang="scss" scoped>
+
+body{
+   
+    width: 100vw;
+    background-color: gray;
+}
     
 </style>

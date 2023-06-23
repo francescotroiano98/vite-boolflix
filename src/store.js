@@ -5,6 +5,9 @@ export const store = reactive({
     seriesList:[],
     availableLangueges:[
         'it','en','fr','ja','es','cn'
+    ],
+    availableLanguegesSerie:[
+        'it','en','fr','ja','es','cn'
     ]
     
     

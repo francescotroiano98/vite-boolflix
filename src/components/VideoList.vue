@@ -9,10 +9,22 @@
         :posterpath="filmvideo.poster_path"
         :availableLangueges="store.availableLangueges"
                                                         />
+        <SingleVideoSerie v-for="serievideo in store.seriesList"
+        
+        :titleserie="serievideo.name"
+        :originaltitleserie="serievideo.original_name"
+        :originallanguageserie="serievideo.original_language"
+        :voteaverageserie="serievideo.vote_average"
+        :posterpathserie="serievideo.poster_path"
+        :availableLangueges="store.availableLangueges"
+        
+                                                        />
+
     </div>
 </template>
 <script>
 import SingleVideo from './SingleVideo.vue';
+import SingleVideoSerie from './SingleVideoSerie.vue';
 import {store} from '../store'
 export default {
     data(){
@@ -23,7 +35,8 @@ export default {
     },
     name:"VideoList",
     components:{
-        SingleVideo
+        SingleVideo,
+        SingleVideoSerie
     }
 }
 </script>

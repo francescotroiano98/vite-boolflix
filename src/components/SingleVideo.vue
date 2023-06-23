@@ -9,14 +9,17 @@
                 <h5 class="card-title">Titolo:{{ title }}</h5>
                 <p class="card-text">Titolo originale:{{originaltitle}}</p>
                 <p class="card-text" v-if="!availableLangueges.includes(originallanguage)">{{originallanguage }}></p>
-                <div class="flag-image d-flex align-items-center " v-else>
-                    <p>Lingua Originale:</p>
-                    <img :src="getImagePath(`${originallanguage}.png`)" alt="">
+                <div class="flag-image d-flex align-items-center mb-2" v-else>
+                    
+                        <p class="m-0 me-2">Lingua Originale:</p>
+                
+                        <img :src="getImagePath(`${originallanguage}.png`)" alt="">
+                    
                 </div>
                 
            
             <div class="d-flex" v-if="getRoundedValue(voteaverage / 2) > 0 && getRoundedValue(voteaverage / 2) <= 1 ">
-                <p>Voto:</p>
+                <p class="me-2">Voto:</p>
                 <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
                 <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
                 <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
@@ -24,7 +27,7 @@
                 <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
             </div>
             <div class="d-flex" v-else-if="getRoundedValue(voteaverage / 2) > 1 && getRoundedValue(voteaverage / 2) <= 2 ">
-                <p>Voto:</p>
+                <p class="me-2">Voto:</p>
                 <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
                 <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
                 <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
@@ -32,7 +35,7 @@
                 <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
             </div>
             <div class="d-flex" v-else-if="getRoundedValue(voteaverage / 2) > 2 && getRoundedValue(voteaverage / 2) <= 3 ">
-                <p>Voto:</p>
+                <p class="me-2">Voto:</p>
                 <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
                 <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
                 <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
@@ -40,7 +43,7 @@
                 <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
             </div>
             <div class="d-flex" v-else-if="getRoundedValue(voteaverage / 2) > 3 && getRoundedValue(voteaverage / 2) <= 4">
-                <p>Voto:</p>
+                <p class="me-2">Voto:</p>
                 <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
                 <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
                 <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
@@ -48,7 +51,7 @@
                 <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
             </div>
             <div class="d-flex" v-else-if="getRoundedValue(voteaverage / 2) > 4 && getRoundedValue(voteaverage / 2) <= 5">
-                <p>Voto:</p>
+                <p class="me-2">Voto:</p>
                 <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
                 <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
                 <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
@@ -62,7 +65,6 @@
         </div>
 </div>
 
-
     
 </template>
 <script>
@@ -74,7 +76,8 @@ export default {
         originallanguage:String,
         posterpath:String,
         voteaverage:Number,
-        availableLangueges: Array
+        availableLangueges: Array,
+    
     },
     methods: {
 
@@ -88,7 +91,7 @@ export default {
                 },
 
                 getPosterImagePath: function(img) {
-                return `http://image.tmdb.org/t/p/w500/${img}`
+                return `http://image.tmdb.org/t/p/w342/${img}`
                 }, 
     }
 }
@@ -109,15 +112,18 @@ export default {
         object-fit: cover;
     }
 }
+.flag-image p{
+    height: 25px;
+}
 .star-size{
     font-size: 20px;
 }
 
 .my_cardsize{
-    width: calc((100% / 3) - 1rem);
+    width: calc((100% / 4) - 1rem);
     margin-right: 0.5rem;
     margin-left: 0.5rem;
-    font-size: small;
+    
     img{
         width: 100%;
         height: 100%;

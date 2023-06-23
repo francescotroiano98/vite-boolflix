@@ -7,7 +7,7 @@
     </div>
         <div class="card-body">
 
-            <h5 class="card-title">Titolo:{{ title }}</h5>
+            <h5 class="card-title">Titolo:{{ titleserie }}</h5>
             <p class="card-text">Titolo originale:{{originaltitleserie}}</p>
             <p class="card-text" v-if="!availableLangueges.includes(originallanguageserie)">{{originallanguageserie}}></p>
             <div class="flag-image d-flex align-items-center mb-2" v-else>
@@ -20,7 +20,7 @@
             
        <!--VOGLIO RENDERE PIU' LEGGIBILE LA PARTE SOTTO -->
 
-       
+
         <div class="d-flex" v-if="getRoundedValue(voteaverageserie / 2) > 0 && getRoundedValue(voteaverageserie / 2) <= 1 ">
             <p class="me-2">Voto:</p>
             <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>

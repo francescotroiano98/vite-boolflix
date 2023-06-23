@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="carta-del-film container d-flex flex-wrap">
         <SingleVideo v-for="filmvideo in store.filmList"
         
         :title="filmvideo.title"

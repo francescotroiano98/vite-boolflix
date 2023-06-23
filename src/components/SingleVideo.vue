@@ -1,5 +1,5 @@
 <template>
-    <div class="carta-del-film d-flex flex-wrap">
+    
         <div class="card mb-3 film my_cardsize">
         <div class="card-top">
                             <img :src="getPosterImagePath(`${posterpath}`)" alt="">
@@ -61,9 +61,6 @@
             </div>
         </div>
 </div>
-        
-    </div>
-
 
 
     
@@ -117,8 +114,9 @@ export default {
 }
 
 .my_cardsize{
-    width: calc(100% / 6);
-    margin-right: 1rem;
+    width: calc((100% / 3) - 1rem);
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
     font-size: small;
     img{
         width: 100%;

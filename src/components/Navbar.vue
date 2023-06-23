@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>io sono la navbar</h1>
+        
     </div>
 </template>
 <script>

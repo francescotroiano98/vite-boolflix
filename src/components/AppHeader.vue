@@ -2,6 +2,8 @@
     <div>
         <Navbar/>
         <Searchbar @searched="searchFilm"/>
+    </div>
+    <!--    
         <article class="film" v-for="mysearchedfilm in filmList">
             <div class="posterimage">
                 <img :src="getPosterImagePath(`${mysearchedfilm.poster_path}`)" alt="">
@@ -50,6 +52,7 @@
         </article>
 
 
+
         <article class="series" v-for="mysearchedfilm in seriesList">
             <div class="posterimage">
                 <img :src="getPosterImagePath(`${mysearchedfilm.poster_path}`)" alt="">
@@ -96,12 +99,75 @@
 
 
         </article>
+        -->
+<div class="d-flex flex-wrap">
+        <div class="card mb-3 film my_cardsize" v-for="mysearchedfilm in filmList">
+        <div class="card-top">
+                            <img :src="getPosterImagePath(`${mysearchedfilm.poster_path}`)" alt="">
+        </div>
+            <div class="card-body">
+
+                <h5 class="card-title">Titolo:{{ mysearchedfilm.title }}</h5>
+                <p class="card-text">Titolo originale:{{mysearchedfilm.original_title}}</p>
+                <p class="card-text" v-if="!availableLangueges.includes(mysearchedfilm.original_language)">{{ mysearchedfilm.original_language }}></p>
+                <div class="flag-image d-flex align-items-center " v-else>
+                    <p>Lingua Originale:</p>
+                    <img :src="getImagePath(`${mysearchedfilm.original_language}.png`)" alt="">
+                </div>
+                
+           
+            <div class="d-flex" v-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 0 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 1 ">
+                <p>Voto:</p>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
+                <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
+                <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
+                <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
+            </div>
+            <div class="d-flex" v-else-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 1 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 2 ">
+                <p>Voto:</p>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
+                <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
+                <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
+            </div>
+            <div class="d-flex" v-else-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 2 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 3 ">
+                <p>Voto:</p>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
+                <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
+            </div>
+            <div class="d-flex" v-else-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 3 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 4">
+                <p>Voto:</p>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
+            </div>
+            <div class="d-flex" v-else-if="getRoundedValue(mysearchedfilm.vote_average / 2) > 4 && getRoundedValue(mysearchedfilm.vote_average / 2) <= 5">
+                <p>Voto:</p>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+                <i class="star-size star-size fa-solid fa-star" style="color: #ffdd00;"></i>
+            </div>
+            <div v-else>
+                <i class="star-size fa-regular fa-star" style="color: #ffffff;"></i>
+                
+            </div>
+        </div>
+</div>
         
     </div>
 </template>
 <script>
 import axios from 'axios';
-import Navbar from './Navbar.vue'
+import Navbar from './navbar.vue'
 import Searchbar from './Searchbar.vue'
 export default {
     data(){
@@ -182,16 +248,14 @@ export default {
 }
 
 </script>
+
 <style lang="scss">
+
 .film{
     border: 2px solid red;
 }
 .series{
     border: 2px solid blue;
-}
-img{
-    width: 20px;
-    height: 20px;
 }
 .posterimage{
     height: 340px;
@@ -203,6 +267,39 @@ img{
     }
 }
 .star-size{
-    font-size: 50px;
-}    
+    font-size: 20px;
+}
+
+.my_cardsize{
+    width: calc(100% / 6);
+    margin-right: 1rem;
+    font-size: small;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+}
+.my_cardsize:hover {
+    background-color: black;
+    color: white;
+    
+}
+.card-body{
+    display: none;
+} 
+.my_cardsize:hover .card-body{
+   display: unset;
+    
+}
+.my_cardsize:hover .flag-image img{
+   display: unset;
+   width: 30px;
+   height: 30px; 
+}  
+.my_cardsize:hover img{
+ display: none;
+    
+}      
 </style>
